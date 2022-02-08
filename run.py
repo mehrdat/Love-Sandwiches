@@ -14,19 +14,41 @@ SHEET = GSPREAD_CLIENT.open("love_sandwiches")
 
 sales = SHEET.worksheet('sales')
 
-#data = sales.get_all_values()
-
-#print(data)
 
 def get_sales_data():
+    while True: 
+        """
+        get sales data from user
+        """
+        print('please enter the sales data from your last market')
+        print('data should be six numbers spread with comas')
+        print('Example: 32,45,32,14,70')
+
+        data_str = input('Data here:')
+        sales_data = data_str.split(',')
+        validate_data(sales_data)
+    
+
+
+def validate_data(values):
     """
-    get sales data from user"""
-    print('please enter the sales data from your last market')
-    print('data should be six numbers spread with comas')
-    print('Example: 32,45,32,14,70')
+    to Validate the data prepared for the validation
+    """
+    
+    try:
+        [int(value) for value in values]
+        if len(values) != 6:
+            raise ValueError(f'exactly 6 value required you prepared {len(values)}')
 
-    data_str=input('Data here:')
-    print(f'the data provided is {data_str}')
+    except ValueError as e:
+        print(f'inavalid data : {e} please try again')
+        return False
+    
+    return True
 
 
+
+    
+    
 get_sales_data()
+
