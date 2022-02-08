@@ -26,7 +26,10 @@ def get_sales_data():
 
         data_str = input('Data here:')
         sales_data = data_str.split(',')
-        validate_data(sales_data)
+        if(validate_data(sales_data):
+            print('data is valid')
+            break
+        
     
 
 
