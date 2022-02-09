@@ -133,22 +133,25 @@ def main():
     stock_data = calculate_stock_data(sales_columns)
     update_worksheet(stock_data, "stock")
     
-    return stock_values
+    return stock_data
 
 
 def get_stock_values(data):
-    worksheet_keys=SHEET.worksheet('sales')
+    worksheet_keys=SHEET.worksheet('stock')
     #print(worksheet_keys.col_values(4)[0])
     keys=[]
-    for num in range(5):
-        keys[num]=worksheet_keys.col_values(num)[0]
+    for num in range(1,7):
+        keys.append(worksheet_keys.col_values(num)[0])
+    print(keys)
+    #print(worksheet_keys.col_values(6)[0])
+
     dict={}
-    for ky,num in zip(keys,range(5):
-        [dict[key]=data[num]
-    pprint(dict)
+    for key,num in zip(keys,range(5)):
+        dict[key]=data[num]
+    print(dict)
 
 #stock_values=get_stock_values(stock_data)
 
 #print("Welcome to Love Sandwiches Data Automation")
-#stock_data=main()
-get_stock_values()
+stock_data=main()
+get_stock_values(stock_data)
